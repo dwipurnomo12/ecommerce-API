@@ -8,6 +8,7 @@ use App\Helpers\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductResource;
+use App\Models\ProductGallery;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -17,11 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(10);
-        return ApiResponse::success(
-            ProductResource::collection($products)->response()->getData(true),
-            'Show all products'
-        );
+        $products = Product::with(['posted_by', 'category'])->latest()->paginate(10);
+        return ApiResponse::success(ProductResource::collection($products), 'Show all products');
     }
 
     /**
@@ -35,9 +33,12 @@ class ProductController extends Controller
             'slug'              => 'required|unique:products',
             'description'       => 'required|string',
             'price'             => 'required|numeric',
+            'gallery'           => 'nullable|array',
+            'gallery.*'         => 'image|mimes:jpg,jpeg,png|max:2048',
+            'category_id'       => 'required'
         ]);
 
-        $imagePath = $request->file('featured_image')->store('products', 'public');
+        $imagePath = $request->file('featured_image')->store('featured_image', 'public');
         $product = Product::create([
             'featured_image' => $imagePath,
             'name'           => $validated['name'],
@@ -45,8 +46,21 @@ class ProductController extends Controller
             'description'    => $validated['description'],
             'price'          => $validated['price'],
             'posted_by'      => auth()->user()->id,
+            'category_id'    => $validated['category_id']
         ]);
 
+        if ($request->hasFile('gallery')) {
+            foreach ($request->file('gallery') as $galleryImage) {
+                $galleryPath = $galleryImage->store('gallery_product', 'public');
+
+                ProductGallery::create([
+                    'product_id' => $product->id,
+                    'image'      => $galleryPath,
+                ]);
+            }
+        }
+
+        $product->load(['posted_by', 'category', 'product_galleries']);
         return ApiResponse::success(new ProductResource($product), 'Product created successfully.');
     }
 
@@ -55,7 +69,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
+        $product = Product::with('product_galleries')->find($id);
         if (!$product) {
             return ApiResponse::error('Data not found', 404);
         }
@@ -80,23 +94,48 @@ class ProductController extends Controller
             'slug'              => 'required|unique:products,slug,' . $product->id,
             'description'       => 'required|string',
             'price'             => 'required|numeric',
+            'status'            => 'required',
+            'gallery'           => 'nullable|array',
+            'gallery.*'         => 'image|mimes:jpg,jpeg,png|max:2048',
+            'category_id'       => 'required'
         ]);
 
         if ($request->hasFile('featured_image')) {
             if ($product->featured_image && Storage::disk('public')->exist($product->featured_image)) {
-                Storage::disk('public')->delete($product->featured_iimage);
+                Storage::disk('public')->delete($product->featured_image);
             }
 
-            $imagePath = $request->file('featured_image')->store('products', 'public');
+            $imagePath = $request->file('featured_image')->store('featured_image', 'public');
             $product->featured_image = $imagePath;
+        }
+
+        if ($request->hasFile('gallery')) {
+            foreach ($product->galleries as $gallery) {
+                if (Storage::disk('public')->exists($gallery->image)) {
+                    Storage::disk('public')->delete($gallery->image);
+                }
+                $gallery->delete();
+            }
+
+            foreach ($request->file('gallery') as $galleryImage) {
+                $galleryPath = $galleryImage->store('gallery_product', 'public');
+
+                ProductGallery::create([
+                    'product_id' => $product->id,
+                    'image'      => $galleryPath,
+                ]);
+            }
         }
 
         $product->name = $validated['name'];
         $product->slug = Str::slug($validated['slug']);
         $product->description = $validated['description'];
         $product->price = $validated['price'];
+        $product->status = $validated['status'];
+        $product->category_id = $validated['category_id'];
         $product->save();
 
+        $product->load(['posted_by', 'category', 'product_galleries']);
         return ApiResponse::success(new ProductResource($product), 'Product updated successfully');
     }
 

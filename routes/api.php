@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\DiscountController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProfileController;
 
@@ -19,6 +21,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::middleware(['role:Admin'])->group(function () {
             Route::resource('/product', ProductController::class);
+            Route::resource('/category', CategoryController::class);
+            Route::resource('/discount', DiscountController::class);
+            Route::put('/discount/{id}/toggle', [DiscountController::class, 'toggleStatus']);
         });
     });
 });

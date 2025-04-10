@@ -21,7 +21,10 @@ class ProductResource extends JsonResource
             'slug'              => $this->slug,
             'description'       => $this->description,
             'price'             => $this->price,
-            'posted_by'         => new UserResource($this->whenLoaded('posted_by')),
+            'status'            => $this->status,
+            'posted_by'         => new UserResource($this->whenLoaded('postedBy')),
+            'category'          => new CategoryResource($this->whenLoaded('category')),
+            'galleries'         => GalleryResource::collection($this->whenLoaded('product_galleries')),
         ];
     }
 }

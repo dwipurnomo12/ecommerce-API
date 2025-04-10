@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->enum('status', ['available', 'not available'])->default('available');
             $table->foreignId('posted_by');
+            $table->foreignId('category_id');
             $table->timestamps();
         });
     }

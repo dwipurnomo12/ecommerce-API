@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('invoice_code')->unique();
             $table->date('transaction_date');
             $table->enum('transaction_status', ['pending', 'paid', 'unpaid'])->default('pending');
-            $table->decimal('total_amount');
+            $table->decimal('total_amount', 10, 2);
             $table->foreignId('customer_id');
+            $table->text('shipping_address')->nullable();
+            $table->string('payment_method')->nullable();
             $table->timestamps();
         });
     }

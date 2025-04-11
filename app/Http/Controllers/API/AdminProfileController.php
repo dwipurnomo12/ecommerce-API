@@ -10,7 +10,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Resources\UserCollection;
 
-class ProfileController extends Controller
+class AdminProfileController extends Controller
 {
     public function index()
     {

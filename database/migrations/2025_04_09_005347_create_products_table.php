@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->longText('description');
-            $table->decimal('price');
+            $table->decimal('price', 10, 2);
             $table->enum('status', ['available', 'not available'])->default('available');
             $table->foreignId('posted_by');
             $table->foreignId('category_id');

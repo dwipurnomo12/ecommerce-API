@@ -8,7 +8,7 @@ use App\Http\Resources\DiscountResource;
 use App\Models\Discount;
 use Illuminate\Http\Request;
 
-class DiscountController extends Controller
+class AdminDiscountController extends Controller
 {
     /**
      * Display a listing of the resource.

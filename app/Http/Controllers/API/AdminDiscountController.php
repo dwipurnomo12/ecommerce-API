@@ -27,7 +27,7 @@ class AdminDiscountController extends Controller
         $validated = $request->validate([
             'discount_code'     => 'required|unique:discounts',
             'discount_name'     => 'required',
-            'discount_amount'   => 'required',
+            'discount_amount'   => 'required|integer|between:1,100',
             'start_date'        => 'nullable|date',
             'end_date'          => 'nullable|date',
         ]);

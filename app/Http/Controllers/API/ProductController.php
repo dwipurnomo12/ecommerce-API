@@ -33,6 +33,7 @@ class ProductController extends Controller
             $query->where('price', '<=', $request->max_price);
         }
 
+        // Short product
         if ($request->sort == 'price_asc') {
             $query->orderBy('price', 'asc');
         } elseif ($request->sort == 'price_desc') {
@@ -43,5 +44,15 @@ class ProductController extends Controller
 
         $products = $query->paginate(10);
         return ApiResponse::success(ProductResource::collection($products), 'Product list fetched.');
+    }
+
+    public function showProductDetail(String $id)
+    {
+        $product = Product::with(['ratings', 'product_galleries', 'category', 'posted_by'])->find($id);
+        if (!$product) {
+            return ApiResponse::error('Data not found', 404);
+        }
+
+        return ApiResponse::success(new ProductResource($product), 'Show detail product');
     }
 }

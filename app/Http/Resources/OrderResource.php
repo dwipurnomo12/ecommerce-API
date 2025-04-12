@@ -21,6 +21,7 @@ class OrderResource extends JsonResource
             'transaction_status' => $this->transaction_status,
             'total_amount'       => $this->total_amount,
             'customer'           => new UserResource($this->whenLoaded('customer')),
+            'discount'           => new DiscountResource($this->whenLoaded('discount')),
         ];
     }
 }

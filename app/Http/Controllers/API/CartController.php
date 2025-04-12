@@ -45,7 +45,7 @@ class CartController extends Controller
             ]);
         }
 
-        return ApiResponse::success(null, 'Item added to cart.');
+        return ApiResponse::success(new CartResource($cart), 'Item added to cart.');
     }
 
     /**
@@ -79,6 +79,6 @@ class CartController extends Controller
         }
         $cart->delete();
 
-        return ApiResponse::success(new CartResource($cart), 'Cart items delete succesfully.');
+        return ApiResponse::success(null, 'Cart items delete succesfully.');
     }
 }

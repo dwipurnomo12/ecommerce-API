@@ -25,6 +25,7 @@ class ProductResource extends JsonResource
             'posted_by'         => new UserResource($this->whenLoaded('postedBy')),
             'category'          => new CategoryResource($this->whenLoaded('category')),
             'galleries'         => GalleryResource::collection($this->whenLoaded('product_galleries')),
+            'ratings'           => RatingResource::collection($this->whenLoaded('ratings')),
         ];
     }
 }

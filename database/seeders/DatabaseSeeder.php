@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Discount;
 use App\Models\Product;
 use Spatie\Permission\Models\Role;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -46,10 +47,19 @@ class DatabaseSeeder extends Seeder
             'name'              => 'Lenovo Ideapad 5',
             'slug'              => 'lenovo-ideapad-5',
             'description'       => 'This is description laptop Lenovo Ideapad 5',
-            'price'             => 550000.00,
+            'price'             => 5500000.00,
             'status'            => 'available',
             'posted_by'         => 1,
             'category_id'       => 1,
+        ]);
+
+        Discount::create([
+            'discount_code'     => 'IDF2025',
+            'discount_name'     => 'Diskon Idul fitri 2025 10%',
+            'discount_amount'   => 10,
+            'start_date'        => '2025-04-10',
+            'end_date'          => '2025-04-20',
+            'is_active'         => true,
         ]);
     }
 }

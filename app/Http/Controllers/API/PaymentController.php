@@ -21,7 +21,7 @@ class PaymentController extends Controller
             'order_id' => 'required|exists:orders,id'
         ]);
 
-        $order = Order::findOrFail($request->order_id);
+        $order = Order::with(['order_details', 'discount', 'customer'])->findOrFail($request->order_id);
         $itemDetails = [];
 
         foreach ($order->order_details as $item) {
@@ -33,10 +33,31 @@ class PaymentController extends Controller
             ];
         }
 
+        if ($order->discount && $order->discount->discount_amount > 0) {
+            $subTotal = $order->order_details->sum(function ($item) {
+                return $item->price * $item->quantity;
+            });
+
+            $discountValue = (int) round(($order->discount->discount_amount / 100) * $subTotal);
+
+            if ($discountValue > 0) {
+                $itemDetails[] = [
+                    'id'       => 'DISCOUNT',
+                    'price'    => -$discountValue,
+                    'quantity' => 1,
+                    'name'     => 'Discount: ' . $order->discount->discount_code,
+                ];
+            }
+        }
+
+        if ($order->total_amount < 100) {
+            return ApiResponse::error('Upss. Something when wrong.', 400);
+        }
+
         $payload = array(
             'transaction_details'   => array(
                 'order_id'      => $order->invoice_code,
-                'gross_amount'  => $order->total_amount,
+                'gross_amount'  => (int) $order->total_amount,
             ),
             'item_details' => $itemDetails,
             'customer_details' => array(

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('customer_id');
             $table->text('shipping_address')->nullable();
             $table->string('payment_method')->nullable();
+            $table->foreignId('discount_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
     }

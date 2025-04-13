@@ -9,7 +9,7 @@
 
 ## 🛒 Laravel 12 RESTful E-Commerce API
 
-This is a full-featured RESTful API for an e-commerce platform, built using **Laravel 12**. It includes product listing, cart, checkout, order tracking, shipping via **RajaOngkir**, and integrated payment using **Midtrans**.
+This is a full-featured RESTful API for an e-commerce platform, built using **Laravel 12**. It includes product listing, cart, apply discount coupon, checkout, and integrated payment using **Midtrans**.
 
 ---
 

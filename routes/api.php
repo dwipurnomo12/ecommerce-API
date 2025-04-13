@@ -28,8 +28,9 @@ Route::prefix('auth')->group(function () {
     Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 });
 
-Route::get('/product', [ProductController::class, 'index']);
+Route::get('/product', [ProductController::class, 'showProduct']);
 Route::get('/product/{id}', [ProductController::class, 'showProductDetail']);
+Route::post('/midtrans-callback', [PaymentController::class, 'handleCallback']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/cart', CartController::class);
@@ -37,7 +38,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/checkout', [OrderController::class, 'checkout']);
     Route::get('/order', [OrderController::class, 'orderHistory']);
     Route::post('/midtrans/snap-token', [PaymentController::class, 'createSnapToken']);
-    Route::post('/midtrans-callback', [PaymentController::class, 'handleCallback']);
     Route::get('/wishlist', [WishlistController::class, 'getWishlist']);
     Route::post('/wishlist', [WishlistController::class, 'addToWishlist']);
     Route::delete('/wishlist/{product_id}', [WishlistController::class, 'removeWishlist']);

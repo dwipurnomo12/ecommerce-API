@@ -1,0 +1,3843 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Laravel",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "https:\/\/ecommerce-api.inovasicode.com\/api",
+            "description": "Local"
+        },
+        {
+            "url": "https:\/\/ecommerce-api.inovasicode.com\/api\/",
+            "description": "Prod"
+        }
+    ],
+    "security": [
+        {
+            "http": []
+        }
+    ],
+    "paths": {
+        "\/admin\/category": {
+            "get": {
+                "operationId": "category.index",
+                "summary": "Display a listing of the resource",
+                "tags": [
+                    "AdminCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/CategoryResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show all category"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "category.store",
+                "summary": "Store a newly created resource in storage",
+                "tags": [
+                    "AdminCategory"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "category": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "category"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/CategoryResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Category created successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/category\/{id}": {
+            "put": {
+                "operationId": "category.update",
+                "description": "\u26a0\ufe0f Cannot generate request documentation: Undefined variable $category",
+                "summary": "Update the specified resource in storage",
+                "tags": [
+                    "AdminCategory"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/CategoryResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Category updated successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "category.destroy",
+                "summary": "Remove the specified resource from storage",
+                "tags": [
+                    "AdminCategory"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/CategoryResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Category delete succesfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/discount": {
+            "get": {
+                "operationId": "discount.index",
+                "summary": "Display a listing of the resource",
+                "tags": [
+                    "AdminDiscount"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/DiscountResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show all discount"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "discount.store",
+                "summary": "Store a newly created resource in storage",
+                "tags": [
+                    "AdminDiscount"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "discount_code": {
+                                        "type": "string"
+                                    },
+                                    "discount_name": {
+                                        "type": "string"
+                                    },
+                                    "discount_amount": {
+                                        "type": "integer"
+                                    },
+                                    "start_date": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "format": "date-time"
+                                    },
+                                    "end_date": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ],
+                                        "format": "date-time"
+                                    }
+                                },
+                                "required": [
+                                    "discount_code",
+                                    "discount_name",
+                                    "discount_amount"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/DiscountResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Discount created successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/discount\/{id}": {
+            "put": {
+                "operationId": "discount.update",
+                "description": "\u26a0\ufe0f Cannot generate request documentation: Undefined variable $discount",
+                "summary": "Update the specified resource in storage",
+                "tags": [
+                    "AdminDiscount"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/DiscountResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Discount update successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "discount.destroy",
+                "summary": "Remove the specified resource from storage",
+                "tags": [
+                    "AdminDiscount"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/DiscountResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Discount delete succesfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/discount\/{id}\/toggle": {
+            "put": {
+                "operationId": "adminDiscount.toggleStatus",
+                "summary": "Update status discount",
+                "tags": [
+                    "AdminDiscount"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/DiscountResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Discount status updated successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/product": {
+            "get": {
+                "operationId": "product.index",
+                "summary": "Display a listing of the resource",
+                "tags": [
+                    "AdminProduct"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/ProductResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show all products"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "product.store",
+                "summary": "Store a newly created resource in storage",
+                "tags": [
+                    "AdminProduct"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart\/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "featured_image": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "contentMediaType": "application\/octet-stream",
+                                        "maxLength": 2048
+                                    },
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "price": {
+                                        "type": "number"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    },
+                                    "gallery": {
+                                        "type": [
+                                            "array",
+                                            "null"
+                                        ],
+                                        "items": {
+                                            "type": "string",
+                                            "format": "binary",
+                                            "contentMediaType": "application\/octet-stream",
+                                            "maxLength": 2048
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "featured_image",
+                                    "name",
+                                    "slug",
+                                    "description",
+                                    "price",
+                                    "category_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/ProductResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Product created successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/product\/{id}": {
+            "get": {
+                "operationId": "product.show",
+                "summary": "Display the specified resource",
+                "tags": [
+                    "AdminProduct"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/ProductResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show detail product"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "product.update",
+                "description": "\u26a0\ufe0f Cannot generate request documentation: Undefined variable $product",
+                "summary": "Update the specified resource in storage",
+                "tags": [
+                    "AdminProduct"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/ProductResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Product updated successfully"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "product.destroy",
+                "summary": "Remove the specified resource from storage",
+                "tags": [
+                    "AdminProduct"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/ProductResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Product delete succesfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/profile": {
+            "get": {
+                "operationId": "adminProfile.index",
+                "tags": [
+                    "AdminProfile"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/UserResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show profile user."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "put": {
+                "operationId": "adminProfile.update",
+                "description": "\u26a0\ufe0f Cannot generate request documentation: Undefined variable $user",
+                "tags": [
+                    "AdminProfile"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/UserResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Profile updated successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/rating": {
+            "get": {
+                "operationId": "adminRating.index",
+                "tags": [
+                    "AdminRating"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/RatingResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show all ratings"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/rating\/{id}": {
+            "get": {
+                "operationId": "adminRating.showDetailRating",
+                "tags": [
+                    "AdminRating"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/RatingResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show detail rating"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "adminRating.destroyRating",
+                "tags": [
+                    "AdminRating"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "null"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Review deleted successfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/sales-report": {
+            "get": {
+                "operationId": "adminSalesReport.index",
+                "tags": [
+                    "AdminSalesReport"
+                ],
+                "parameters": [
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "filter_date": {
+                                                            "type": "string"
+                                                        },
+                                                        "total_income": {
+                                                            "type": "string"
+                                                        },
+                                                        "total_orders": {
+                                                            "type": "string"
+                                                        },
+                                                        "total_products_sold": {
+                                                            "type": "string"
+                                                        },
+                                                        "best_selling_products": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "filter_date",
+                                                        "total_income",
+                                                        "total_orders",
+                                                        "total_products_sold",
+                                                        "best_selling_products"
+                                                    ]
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Sales report"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/transaction": {
+            "get": {
+                "operationId": "adminTransaction.index",
+                "tags": [
+                    "AdminTransaction"
+                ],
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/OrderResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show list transaction"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/admin\/transaction\/{id}": {
+            "get": {
+                "operationId": "adminTransaction.showDetailTransaction",
+                "tags": [
+                    "AdminTransaction"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/OrderResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show detail transaction."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/auth\/register": {
+            "post": {
+                "operationId": "auth.register",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 255
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "minLength": 6
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "minLength": 6
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "password_confirmation"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "token": {
+                                                            "type": "string"
+                                                        },
+                                                        "user": {
+                                                            "$ref": "#\/components\/schemas\/UserResource"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "token",
+                                                        "user"
+                                                    ]
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Registration Successfully"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    }
+                }
+            }
+        },
+        "\/auth\/login": {
+            "post": {
+                "operationId": "auth.login",
+                "tags": [
+                    "Auth"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "user": {
+                                                            "$ref": "#\/components\/schemas\/UserResource"
+                                                        },
+                                                        "token": {
+                                                            "type": "string"
+                                                        },
+                                                        "expires_at": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "user",
+                                                        "token",
+                                                        "expires_at"
+                                                    ]
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Login Successfully"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 401
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Unauthorized"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    }
+                }
+            }
+        },
+        "\/auth\/logout": {
+            "post": {
+                "operationId": "auth.logout",
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "null"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Logout successfully"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/cart": {
+            "get": {
+                "operationId": "cart.index",
+                "summary": "Display a listing of the resource",
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/CartResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show cart item"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "cart.store",
+                "summary": "Store a newly created resource in storage",
+                "tags": [
+                    "Cart"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "product_id": {
+                                        "type": "integer"
+                                    },
+                                    "quantity": {
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ],
+                                        "minimum": 1
+                                    }
+                                },
+                                "required": [
+                                    "product_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/CartResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Item added to cart."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/cart\/{id}": {
+            "delete": {
+                "operationId": "cart.destroy",
+                "summary": "Remove the specified resource from storage",
+                "tags": [
+                    "Cart"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "null"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Cart items delete succesfully."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/cart\/{id}\/update-qty": {
+            "put": {
+                "operationId": "cart.updateQty",
+                "summary": "Update the specified resource in storage",
+                "tags": [
+                    "Cart"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "quantity": {
+                                        "type": "integer",
+                                        "minimum": 1
+                                    }
+                                },
+                                "required": [
+                                    "quantity"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Quantity updated."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/checkout": {
+            "post": {
+                "operationId": "order.checkout",
+                "tags": [
+                    "Order"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "shipping_address": {
+                                        "type": "string"
+                                    },
+                                    "payment_method": {
+                                        "type": "string"
+                                    },
+                                    "code_discount": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "shipping_address",
+                                    "payment_method"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "order": {
+                                                            "type": "string"
+                                                        },
+                                                        "discount_applied": {
+                                                            "type": [
+                                                                "string",
+                                                                "null"
+                                                            ]
+                                                        },
+                                                        "discount_value": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "order",
+                                                        "discount_applied",
+                                                        "discount_value"
+                                                    ]
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Checkout successful, please make payment."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "null"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 400
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Invalid or expired discount code."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "null"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 400
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Cart is empty."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/order": {
+            "get": {
+                "operationId": "order.orderHistory",
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/OrderResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show order history customer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/midtrans-callback": {
+            "post": {
+                "operationId": "payment.handleCallback",
+                "tags": [
+                    "Payment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Notification handled"
+                                        }
+                                    },
+                                    "required": [
+                                        "message"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 403
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Invalid signature"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/midtrans\/snap-token": {
+            "post": {
+                "operationId": "payment.createSnapToken",
+                "tags": [
+                    "Payment"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "order_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "order_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "snap_token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "snap_token"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 400
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Upss. Something when wrong."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "404": {
+                        "$ref": "#\/components\/responses\/ModelNotFoundException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/product": {
+            "get": {
+                "operationId": "product.showProduct",
+                "tags": [
+                    "Product"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/ProductResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Product list fetched."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/product\/{id}": {
+            "get": {
+                "operationId": "product.showProductDetail",
+                "tags": [
+                    "Product"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/ProductResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show detail product"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Data not found"
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/rate-product": {
+            "post": {
+                "operationId": "rating.addRating",
+                "tags": [
+                    "Rating"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "product_id": {
+                                        "type": "integer"
+                                    },
+                                    "rating": {
+                                        "type": "integer"
+                                    },
+                                    "comment": {
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "product_id",
+                                    "rating"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "string"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "Rating added successfully.",
+                                                                "Rating updated successfuly."
+                                                            ]
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 403
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "You can only rate products you have purchased."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/wishlist": {
+            "get": {
+                "operationId": "wishlist.getWishlist",
+                "tags": [
+                    "Wishlist"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#\/components\/schemas\/WishlistResource"
+                                                    }
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Show wishlist customer"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            },
+            "post": {
+                "operationId": "wishlist.addToWishlist",
+                "tags": [
+                    "Wishlist"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "product_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "required": [
+                                    "product_id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#\/components\/schemas\/WishlistResource"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Product added to wishlist."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 400
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "The product is already in the wishlist."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ValidationException"
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        },
+        "\/wishlist\/{product_id}": {
+            "delete": {
+                "operationId": "wishlist.removeWishlist",
+                "tags": [
+                    "Wishlist"
+                ],
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "anyOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "type": "null"
+                                                },
+                                                "meta": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "status": {
+                                                            "type": "integer",
+                                                            "example": 200
+                                                        },
+                                                        "message": {
+                                                            "type": "string",
+                                                            "example": "Product removed from wishlist."
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "status",
+                                                        "message"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "data",
+                                                "meta"
+                                            ]
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "null"
+                                        },
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "status": {
+                                                    "type": "integer",
+                                                    "example": 404
+                                                },
+                                                "message": {
+                                                    "type": "string",
+                                                    "example": "Wishlist item not found."
+                                                }
+                                            },
+                                            "required": [
+                                                "status",
+                                                "message"
+                                            ]
+                                        }
+                                    },
+                                    "required": [
+                                        "data",
+                                        "meta"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "$ref": "#\/components\/responses\/AuthenticationException"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "http": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        },
+        "schemas": {
+            "CartItemResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "cart_id": {
+                        "type": "integer"
+                    },
+                    "product_id": {
+                        "type": "integer"
+                    },
+                    "quantity": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "id",
+                    "cart_id",
+                    "product_id",
+                    "quantity"
+                ],
+                "title": "CartItemResource"
+            },
+            "CartResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "cart_items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/CartItemResource"
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id"
+                ],
+                "title": "CartResource"
+            },
+            "CategoryResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "category": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "category"
+                ],
+                "title": "CategoryResource"
+            },
+            "DiscountResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "discount_code": {
+                        "type": "string"
+                    },
+                    "discount_name": {
+                        "type": "string"
+                    },
+                    "discount_amount": {
+                        "type": "integer"
+                    },
+                    "start_date": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "end_date": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "is_active": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "id",
+                    "discount_code",
+                    "discount_name",
+                    "discount_amount",
+                    "start_date",
+                    "end_date",
+                    "is_active"
+                ],
+                "title": "DiscountResource"
+            },
+            "GalleryResource": {
+                "type": "string",
+                "title": "GalleryResource"
+            },
+            "OrderResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "invoice_code": {
+                        "type": "string"
+                    },
+                    "transaction_date": {
+                        "type": "string"
+                    },
+                    "transaction_status": {
+                        "type": "string"
+                    },
+                    "total_amount": {
+                        "type": "string"
+                    },
+                    "customer": {
+                        "$ref": "#\/components\/schemas\/UserResource"
+                    },
+                    "discount": {
+                        "$ref": "#\/components\/schemas\/DiscountResource"
+                    }
+                },
+                "required": [
+                    "id",
+                    "invoice_code",
+                    "transaction_date",
+                    "transaction_status",
+                    "total_amount"
+                ],
+                "title": "OrderResource"
+            },
+            "ProductResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "featured_image": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "posted_by": {
+                        "$ref": "#\/components\/schemas\/UserResource"
+                    },
+                    "category": {
+                        "$ref": "#\/components\/schemas\/CategoryResource"
+                    },
+                    "galleries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/GalleryResource"
+                        }
+                    },
+                    "ratings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#\/components\/schemas\/RatingResource"
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "featured_image",
+                    "name",
+                    "slug",
+                    "description",
+                    "price",
+                    "status"
+                ],
+                "title": "ProductResource"
+            },
+            "RatingResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "customer": {
+                        "$ref": "#\/components\/schemas\/UserResource"
+                    },
+                    "product": {
+                        "$ref": "#\/components\/schemas\/ProductResource"
+                    },
+                    "comment": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "comment"
+                ],
+                "title": "RatingResource"
+            },
+            "UserResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "email"
+                ],
+                "title": "UserResource"
+            },
+            "WishlistResource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "product_id": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "id",
+                    "user_id",
+                    "product_id"
+                ],
+                "title": "WishlistResource"
+            }
+        },
+        "responses": {
+            "ValidationException": {
+                "description": "Validation error",
+                "content": {
+                    "application\/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "description": "Errors overview."
+                                },
+                                "errors": {
+                                    "type": "object",
+                                    "description": "A detailed description of each field that failed validation.",
+                                    "additionalProperties": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "message",
+                                "errors"
+                            ]
+                        }
+                    }
+                }
+            },
+            "AuthenticationException": {
+                "description": "Unauthenticated",
+                "content": {
+                    "application\/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error overview."
+                                }
+                            },
+                            "required": [
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            },
+            "ModelNotFoundException": {
+                "description": "Not found",
+                "content": {
+                    "application\/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "description": "Error overview."
+                                }
+                            },
+                            "required": [
+                                "message"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

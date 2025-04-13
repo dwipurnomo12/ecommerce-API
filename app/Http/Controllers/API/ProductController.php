@@ -10,7 +10,7 @@ use App\Http\Resources\ProductResource;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function showProduct(Request $request)
     {
         $query = Product::query();
 

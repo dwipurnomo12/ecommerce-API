@@ -83,8 +83,9 @@ class PaymentController extends Controller
         $orderId        = $request->order_id;
         $grossAmount    = $request->gross_amount;
         $signatureKey   = $request->signature_key;
+        $statusCode     = $request->statusCode;
 
-        $hashed =  hash("sha512", $orderId . $grossAmount . $serverKey);
+        $hashed =  hash("sha512", $orderId . $statusCode .  $grossAmount . $serverKey);
         if ($signatureKey !== $hashed) {
             return ApiResponse::error('Invalid signature', 403);
         }

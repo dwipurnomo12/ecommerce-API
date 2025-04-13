@@ -18,7 +18,7 @@ class AdminRatingController extends Controller
 
     public function showDetailRating($id)
     {
-        $rating = Rating::with(['customer', 'product'])->findOrFail($id);
+        $rating = Rating::with(['customer', 'product'])->find($id);
         if (!$rating) {
             return ApiResponse::error('Data not found.', 404);
         }
@@ -28,7 +28,7 @@ class AdminRatingController extends Controller
 
     public function destroyRating($id)
     {
-        $rating = Rating::findOrFail($id);
+        $rating = Rating::find($id);
         if (!$rating) {
             return ApiResponse::error('Data not found.', 404);
         }

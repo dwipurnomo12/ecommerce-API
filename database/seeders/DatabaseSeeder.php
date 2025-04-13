@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Discount;
 use App\Models\Product;
+use App\Models\ProductGallery;
 use Spatie\Permission\Models\Role;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\User;
@@ -51,6 +52,14 @@ class DatabaseSeeder extends Seeder
             'status'            => 'available',
             'posted_by'         => 1,
             'category_id'       => 1,
+        ]);
+        ProductGallery::create([
+            'product_id'    => 1,
+            'image'         => 'gallery_product/img_gallery1.jpg'
+        ]);
+        ProductGallery::create([
+            'product_id'    => 1,
+            'image'         => 'gallery_product/img_gallery2.jpg'
         ]);
 
         Discount::create([

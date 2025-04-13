@@ -16,7 +16,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cartItems = Cart::with(['cartItems.product'])->where('user_id', auth()->user()->id)->latest()->get();
+        $cartItems = Cart::with(['cartItems'])->where('user_id', auth()->user()->id)->latest()->get();
         return ApiResponse::success(CartResource::collection($cartItems), 'Show cart item');
     }
 
